@@ -1,6 +1,12 @@
-from app import app,MessagingResponse,request
+from app import app,MessagingResponse,request,render_template,url_for
 from dao import *
 import time
+
+# @app.route("/" ,methods=['POST','GET',])
+# def inicio():
+
+#     return render_template('inicio.html')
+
 
 @app.route("/sms", methods=['POST'])
 def sms_reply():
@@ -46,7 +52,7 @@ def sms_reply():
     elif msg == ('SP'):
         resp.message('As paradas de SP são:\nTRANSBRASILIANA BR-153/SP Divisa MG/SP - Divisa SP/PR *nota: 3.8*\nNOVADUTRA BR-116/RJ/SP Rio de Janeiro/RJ - São Paulo/SP *nota: 3.2*')
     elif msg == ('RJ'):
-        resp.message('As paradas de SP são:CONCER BR-040/MG/RJ Rio de Janeiro/RJ - Juiz de Fora/MG  *nota: 4.0*\nCRT BR-116/RJ Rio de Janeiro/RJ - Teresópolis/RJ – Além Paraíba/MG *nota: 3.9*\nFLUMINENSE BR-101/RJ Divisa RJ/ES – Ponte Presidente Costa e Silva\nRODOVIA DO AÇO BR-393/RJ Divisa MG/RJ - Entr.BR-116*nota: 2.6*')
+        resp.message('As paradas de SP são:CONCER BR-040/MG/RJ Rio de Janeiro/RJ - Juiz de Fora/MG  *nota: 4.0*\nCRT BR-116/RJ Rio de Janeiro/RJ - Teresópolis/RJ – Além Paraíba/MG *nota: 3.9*\nFLUMINENSE BR-101/RJ Divisa RJ/ES – Ponte Presidente Costa e Silva\nRODOVIA DO AÇO BR-393/RJ Divisa MG/RJ - Entr.BR-116 *nota: 2.6*')
     elif msg == ('Frete'):
         resp.message('Informe o tipo de carga, distacia (km) e numero de eixos\nExemplo-> Transporte, Carga Frigorifica,300 , 2')
     elif msg_quebrada == 'Transporte':
@@ -60,3 +66,5 @@ def sms_reply():
     else:
         resp.message("Não entendi oque voce disse poderia digita me enviar a palavra Ajuda e seguir nossas onstruções")
     return str(resp)
+
+    
